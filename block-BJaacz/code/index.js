@@ -4,13 +4,25 @@
   Create a function named addTwo which accepts a number, adds 2 to the number and return the new value.
 */
 
+function addTwo(num){
+  return num+2;
+}
+
 /*
   Create a function named addThree which accepts a number, adds 3 to the number and return the new value.
 */
 
+function addThree(num){
+  return num + 3;
+}
+
 /*
   Create a function named addFive which accepts a number, adds 5 to the number and return the new value.
 */
+
+function addFive(num){
+  return num + 5;
+}
 
 /*
   Create a function named addTwoToArray which accepts:
@@ -19,6 +31,12 @@
     - While doing so use the funciton addTwo
 */
 
+function addTwoToArray(arr){
+  for ( num of arr){
+    
+  }return addTwo(num);
+}
+
 /*
   Create a function named addThreeToArray which accepts:
     - an array of numbers
@@ -26,12 +44,24 @@
     - while doing so use the funciton addThree
 */
 
+function addThreeToArray(arr){
+  for(num of arr){
+    return addThree(num);
+  }
+}
+
 /*
   Create a function named addFiveToArray which accepts:
     - an array of numbers
     - aeturns a new array where 2 is added to each element
     - while doing so use the funciton addThree
 */
+
+function addFiveToArray(arr){
+  for(num of arr){
+    return addFive(num);
+  }
+}
 
 /*
 In above function addTwoToArray, addThreeToArray, addFiveToArray we are repeating the code, let's fix this.
@@ -47,7 +77,20 @@ In above function addTwoToArray, addThreeToArray, addFiveToArray we are repeatin
     changeArray([1, 2, 3, 4, 5, 6], addTwo); // [3, 4, 5, 6, 7, 8]
     changeArray([1, 2, 3, 4, 5, 6], addThree); // [4, 5, 6, 7, 8, 9]
     changeArray([1, 2, 3, 4, 5, 6], addFive); // [6, 7, 8, 9, 10, 11]
-/*
+*/
+
+function changeArray(arr,cb){
+  let finalResult = [];
+  for(num of arr){
+     finalResult.push(cb(num));
+  }
+  return finalResult;
+}
+
+// EXAMPLE:
+changeArray([1, 2, 3, 4, 5, 6], addTwo); // [3, 4, 5, 6, 7, 8]
+changeArray([1, 2, 3, 4, 5, 6], addThree); // [4, 5, 6, 7, 8, 9]
+changeArray([1, 2, 3, 4, 5, 6], addFive); // [6, 7, 8, 9, 10, 11]
 
 
 /*
@@ -61,11 +104,24 @@ In above function addTwoToArray, addThreeToArray, addFiveToArray we are repeatin
     sendMessage("Hello Prompt!", prompt);
 */
 
+function sendMessage(message,cb){
+    let result = cb(message);
+    return result;
+}
+
+sendMessage("Hello", console.log);
+sendMessage("Hello Alert!", alert);
+sendMessage("Hello Prompt!", prompt);
+
 /*
 
  Create a function named `first` that accepts an argument a function (callback) and return the same function defination.
 
 */
+
+function first(cb){
+  return cb();
+}
 
 /*
  Create a function named `second`
@@ -74,6 +130,15 @@ In above function addTwoToArray, addThreeToArray, addFiveToArray we are repeatin
   - Also write the required code to call the function
 */
 
+function second(){
+  function third(number){
+    return number + 1;
+    
+  }
+  return third();
+}
+second();
+
 /*
  Write a function named `callMe` which 
   - accept a function (callback function) as argument.
@@ -81,6 +146,13 @@ In above function addTwoToArray, addThreeToArray, addFiveToArray we are repeatin
   - return final varibale from the function.
   - also write the required code to call the function.
 */
+
+// function callMe(cb){
+//   let final = cb();
+//   return final;
+// }
+// callMe();
+
 
 // Data Starts (Don't change this)
 const people = [
@@ -115,16 +187,44 @@ const grades = [
     isAdult(people[2]); // true
 */
 
+function isAdult(obj){
+  
+  for(value in obj){
+    if(value.age > 18){
+      return true;
+    } 
+  }return false;
+}
+
+
+
+isAdult(people[0]); // false
+isAdult(people[1]); // true
+isAdult(people[2]); // true
+
 /*
   Create a function named isMale which accepts:
     - an object
     - returns true or false based on the `sex` property in the object is `M` or not
 
   EXAMPLE:
-    isMale(grade[0]); // true
-    isMale(grade[1]); // false
-    isMale(grade[2]); // true
+    isMale(grades[0]); // true
+    isMale(grades[1]); // false
+    isMale(grades[2]); // true
 */
+
+function isMale(obj){
+  for ( value in obj ){
+    if(value.sex == "M"){
+      return true;
+    }
+  }return false;
+  
+}
+
+isMale(grades[0]); // true
+isMale(grades[1]); // false
+isMale(grades[2]); // true
 
 /*
   Create a function named isFemale which accepts:
@@ -132,10 +232,23 @@ const grades = [
     - returns true or false based on the `sex` property in the object is `F` or not
 
   EXAMPLE:
-    isMale(grade[0]); // false
-    isMale(grade[1]); // true
-    isMale(grade[2]); // false
+    isFemale(grade[0]); // false
+    isFemale(grade[1]); // true
+    isFemale(grade[2]); // false
 */
+
+function isFemale(obj){
+  for(value in obj){
+    if(value.sex == "F"){
+      
+    } return true;
+  }
+  return false;
+}
+
+isFemale(grades[0]); // false
+isFemale(grades[1]); // true
+isFemale(grades[2]); // false
 
 /*
   Create a function named isGradeA which accepts:
@@ -148,6 +261,18 @@ const grades = [
     isGradeA(grade[2]); // true
 */
 
+function isGradeA(obj){
+  for(value in obj){
+    if (value.grade > 12){
+
+    }return true;
+  }return false;
+}
+
+isGradeA(grades[0]); // false
+isGradeA(grades[1]); // false
+isGradeA(grades[2]); // true
+
 /*
   Create a function named isGradeB which accepts:
     - an object
@@ -159,6 +284,18 @@ const grades = [
     isGradeB(grade[2]); // false
 */
 
+function isGradeB(obj){
+  for (value in obj){
+    if(value.grade > 8 && value.grade <= 12){
+      
+    }return true;
+  }return false;
+  
+}
+isGradeB(grades[0]); // true
+isGradeB(grades[1]); // true
+isGradeB(grades[2]); // false
+
 /*
   Create a function named isGradeC which accepts:
     - an object
@@ -169,6 +306,19 @@ const grades = [
     isGradeC(grade[1]); // false
     isGradeC(grade[2]); // false
 */
+
+function isGradeC(obj){
+  for ( value in obj){
+    if( value.grade <= 8){
+       return true;
+    }
+    return false
+  }
+}
+
+isGradeC(grades[0]); // true
+isGradeC(grades[1]); // false
+isGradeC(grades[2]); // false
 
 /*
   Create a function named filterAdult which accepts:
@@ -186,6 +336,15 @@ const grades = [
     ];
 */
 
+function filterAdult(obj){
+  let final = [];
+  for ( value of obj){
+    if(isAdult(obj)){
+      final.push(value);
+    }
+  }return final;
+}
+
 /*
   Create a function named filterMale which accepts:
     - an array of objects
@@ -193,7 +352,7 @@ const grades = [
     - while doing so use the funciton isMale you created earlier
 
   EXAMPLE:
-    filterMale(grade);
+    filterMale(grades);
 
   Output: 
     [
@@ -204,6 +363,18 @@ const grades = [
       { name: 'Donald', grade: 5, sex: 'M' },
     ];
 */
+
+function filterMale(obj){
+  let final = [];
+  for ( value in obj){
+    if(isMale(value.sex)){
+       final.push(value);
+    }
+  }
+  return final;
+}
+
+
 
 /*
   Create a function named filterFemale which accepts:
@@ -224,6 +395,14 @@ const grades = [
     ]
 */
 
+
+function filterFemale(obj){
+  let final = [];
+  for (value of obj){
+    final.push(isFemale(value));
+  }return final;
+}
+
 /*
   Create a function named filterGradeA which accepts:
     - an array of objects
@@ -232,7 +411,7 @@ const grades = [
 
   
   EXAMPLE:
-    filterGradeA(grade);
+    filterGradeA(grades);
 
   Output: 
     [
@@ -243,6 +422,13 @@ const grades = [
       { name: 'Jane', grade: 9, sex: 'F' },
     ]
 */
+
+function filterGradeA(arr){
+  let final = [];
+  for ( value of arr){
+    final.push(isGradeA(arr));
+  }return final;
+}
 
 /*
   Create a function named filterGradeB which accepts:
@@ -263,6 +449,13 @@ const grades = [
     ]
 */
 
+function filterGradeB(arr){
+  let final = [];
+  for ( value of arr){
+    final.push(isGradeB(value));
+  }return final;
+}
+
 /*
   Create a function named filterGradeC which accepts:
     - an array of objects
@@ -281,6 +474,14 @@ const grades = [
     ]
 */
 
+function filterGradeC(arr){
+  let final = [];
+  for ( value of arr){
+    final.push(isGradeC(value));
+  }return final;
+}
+
+
 /*
 We are repeating lots of code in above functions like filterGradeC, filterGradeB, filterGradeA, filterAdult. We will fix
 this by making a higher order function named filter. Now using one function filter we will be able to filter anything we want.
@@ -295,12 +496,19 @@ filter is a higher order function.
 
   EXAMPLE:
     filter(people, isAdult);
-    filter(grade, isMale);
-    filter(grade, isFemale);
-    filter(grade, isGradeA);
-    filter(grade, isGradeB);
-    filter(grade, isGradeC);
+    filter(grades, isMale);
+    filter(grades, isFemale);
+    filter(grades, isGradeA);
+    filter(grades, isGradeB);
+    filter(grades, isGradeC);
 */
+
+function filter(obj,cb){
+  let final = [];
+  for ( value in obj){
+    final.push(cb(value));
+  }return final;
+}
 
 /*
   Create a function named multiplyBy which accepts:
@@ -320,3 +528,20 @@ filter is a higher order function.
     multiplyByFive(20); // 180
     multiplyByFive(5); // 45
 */
+
+function multiplyBy(num){
+ return function(num2){
+   return num * num2;
+ }
+}
+
+// let multiplyByFive = multiplyBy(5);
+//     multiplyByFive(10); // 50
+//     multiplyByFive(20); // 100
+//     multiplyByFive(5); // 25
+
+let multiplyByNine = multiplyBy(9);
+    multiplyByNine(10); // 90
+    multiplyByNine(20); // 180
+    multiplyByNine(5); // 45
+

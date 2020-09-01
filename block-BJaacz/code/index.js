@@ -188,12 +188,7 @@ const grades = [
 */
 
 function isAdult(obj){
-  
-  for(value in obj){
-    if(value.age > 18){
-      return true;
-    } 
-  }return false;
+  return obj.age > 18;
 }
 
 

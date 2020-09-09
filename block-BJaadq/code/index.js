@@ -1,35 +1,48 @@
 // NOTE: You can not use reduce methods to solve this exercise
 
 function countAllPeople() {
-  // your code goes here
+  let count = 0;
+	got.houses.forEach((e) => {
+		count += e.people.length;
+	});
+	return count;
 }
 
 function peopleByHouses() {
-  // your code goes here
+  const peopleByHousesObj = {};
+	got.houses.forEach((e) => {
+		peopleByHousesObj[e.name] = e.people.length;
+	});
+	return peopleByHousesObj;
 }
 
 function everyone() {
-  // your code goes here
+  return Object.values(peopleNameOfAllHouses()).flat();
 }
 
 function nameWithS() {
-  // your code goes here
+  return everyone().filter((e) => e.includes("S") || e.includes("s"));
 }
 
 function nameWithA() {
-  // your code goes here
+  return everyone().filter((e) => e.includes("A") || e.includes("a"));
 }
 
 function surnameWithS() {
-  // your code goes here
+  return everyone().filter((e) => e.split(" ")[1].startsWith("S"));
 }
 
 function surnameWithA() {
-  // your code goes here
+  return everyone().filter((e) => e.split(" ")[1].startsWith("A"));
 }
 
 function peopleNameOfAllHouses() {
-  // your code goes here
+  const peopleByHousesObj = {};
+	got.houses.forEach((e) => {
+		peopleByHousesObj[e.name] = [];
+		e.people.forEach((ele) => peopleByHousesObj[e.name].push(ele.name));
+	});
+	return peopleByHousesObj;
 }
 
 // Testing your result after writing your function
